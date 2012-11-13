@@ -1,0 +1,21 @@
+{
+  "name": "library",
+  "version": "0.1.0",
+  "description": "A collection of useful functions and classes, which (for the most part) attempt to bring a bit of sanity to javascript, rounding off some of the sharp corners developers typically impale themselves on.",
+  "main": "library.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morgul/libraryjs.git"
+  },
+  "keywords": [
+    "library",
+    "dictionary",
+    "list",
+    "javascript"
+  ],
+  "author": "Christopher S. Case",
+  "license": "MIT"
+}
