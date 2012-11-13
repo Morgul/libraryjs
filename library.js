@@ -66,7 +66,7 @@ function List (array)
 
 List.prototype = Array.prototype;
 
-List.index = function(elem)
+List.prototype.index = function(elem)
 {
     if (this.indexOf)
     {
@@ -87,6 +87,11 @@ List.index = function(elem)
 List.prototype.append = function(item)
 {
     this.push(item);
+}; // end add
+
+List.prototype.add = function(item)
+{
+    this.append(item);
 }; // end add
 
 List.prototype.insert = function(index, item)
@@ -123,9 +128,9 @@ List.prototype.contains = function(item)
 
 List.prototype.each = function(callback)
 {
-    for ( ; i < this.length; )
+    for (var i = 0; i < this.length; i++)
     {
-        if (callback.call(this[i], i, this[i++ ]) === false)
+        if (callback.call(this, i, this[i]) == false)
         {
             break;
         } // end if
@@ -133,13 +138,17 @@ List.prototype.each = function(callback)
 }; // end each
 
 //----------------------------------------------------------------------------------------------------------------------
-// Support both AMD and node, through amdefine.
+// Support both AMD and node
 //----------------------------------------------------------------------------------------------------------------------
 
-if (typeof define !== 'function')
+// Help Node out by setting up define.
+if (typeof module === 'object' && typeof define !== 'function')
 {
-    var define = require('amdefine')(module);
-} // end amdefine support
+    var define = function (factory)
+    {
+        module.exports = factory(require, exports, module);
+    }; // end define
+} // end if
 
 //----------------------------------------------------------------------------------------------------------------------
 // AMD Module Define
